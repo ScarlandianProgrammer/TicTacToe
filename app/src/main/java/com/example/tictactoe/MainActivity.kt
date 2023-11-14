@@ -81,13 +81,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun changeText(button: Button) {
-        val instructionText = this.findViewById<TextView>(R.id.InstructionText)
-        if (instructionText.text.substring(0, 1) == "O") {
-            button.text = "O"
-            instructionText.text = "X's Turn"
-        } else {
-            button.text = "X"
-            instructionText.text = "O's Turn"
+        if (button.text == "") {
+            val instructionText = this.findViewById<TextView>(R.id.InstructionText)
+            if (instructionText.text.substring(0, 1) == "O") {
+                button.text = "O"
+                instructionText.text = "X's Turn"
+            } else {
+                button.text = "X"
+                instructionText.text = "O's Turn"
+            }
         }
     }
 }
