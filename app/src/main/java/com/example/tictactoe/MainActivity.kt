@@ -90,6 +90,64 @@ class MainActivity : AppCompatActivity() {
                 button.text = "X"
                 instructionText.text = "O's Turn"
             }
+            isGameDone()
         }
+    }
+
+    private fun isGameDone() {
+        if (threeInRow() || threeInColumn() || threeInDiagonal()) {
+            val instructionText = this.findViewById<TextView>(R.id.InstructionText)
+            val player = instructionText.text.substring(0, 1)
+            instructionText.text = "$player wins!"
+        }
+    }
+
+    private fun threeInColumn(): Boolean {
+        // if there is three in a row in one of the columns
+        // buttons in the left column have the same text value
+        if ((findViewById<Button>(R.id.Button1).text == findViewById<Button>(R.id.Button4).text
+                    && findViewById<Button>(R.id.Button1).text == findViewById<Button>(R.id.Button7).text)
+            // buttons in the middle column have the same text value
+            || (findViewById<Button>(R.id.Button2).text == findViewById<Button>(R.id.Button5).text
+                    && findViewById<Button>(R.id.Button2).text == findViewById<Button>(R.id.Button8).text)
+            // buttons in the right column have the same text value
+            || (findViewById<Button>(R.id.Button3).text == findViewById<Button>(R.id.Button6).text
+                    && findViewById<Button>(R.id.Button3).text == findViewById<Button>(R.id.Button9).text)
+        ) {
+            return true
+        }
+        // else return false
+        return false
+    }
+
+    private fun threeInRow(): Boolean {
+        // if there is three in a row in one of the rows
+        // buttons in the top row have the same text value
+        if ((findViewById<Button>(R.id.Button1).text == findViewById<Button>(R.id.Button2).text
+                    && findViewById<Button>(R.id.Button1).text == findViewById<Button>(R.id.Button3).text)
+            // buttons in the middle row have the same text value
+            || (findViewById<Button>(R.id.Button4).text == findViewById<Button>(R.id.Button5).text
+                    && findViewById<Button>(R.id.Button4).text == findViewById<Button>(R.id.Button6).text)
+            // buttons in the bottom row have the same text value
+            || (findViewById<Button>(R.id.Button7).text == findViewById<Button>(R.id.Button8).text
+                    && findViewById<Button>(R.id.Button7).text == findViewById<Button>(R.id.Button9).text)
+        ) {
+            return true
+        }
+        // else return false
+        return false
+    }
+
+    private fun threeInDiagonal(): Boolean {
+        if ((findViewById<Button>(R.id.Button1).text == findViewById<Button>(R.id.Button5).text
+                    && findViewById<Button>(R.id.Button1).text == findViewById<Button>(R.id.Button9).text)
+            // buttons in the middle row have the same text value
+            || (findViewById<Button>(R.id.Button3).text == findViewById<Button>(R.id.Button5).text
+                    && findViewById<Button>(R.id.Button3).text == findViewById<Button>(R.id.Button7).text)
+        ) {
+            return true
+        }
+        // else return false
+        return false
     }
 }
