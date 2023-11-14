@@ -66,23 +66,23 @@ class MainActivity : AppCompatActivity() {
 
     private fun disableBoard() {
         val button1 = findViewById<Button>(R.id.Button1)
-        button1.setOnClickListener { null }
+        button1.setOnClickListener { }
         val button2 = findViewById<Button>(R.id.Button2)
-        button2.setOnClickListener { null }
+        button2.setOnClickListener { }
         val button3 = findViewById<Button>(R.id.Button3)
-        button3.setOnClickListener { null }
+        button3.setOnClickListener { }
         val button4 = findViewById<Button>(R.id.Button4)
-        button4.setOnClickListener { null }
+        button4.setOnClickListener { }
         val button5 = findViewById<Button>(R.id.Button5)
-        button5.setOnClickListener { null }
+        button5.setOnClickListener { }
         val button6 = findViewById<Button>(R.id.Button6)
-        button6.setOnClickListener { null }
+        button6.setOnClickListener { }
         val button7 = findViewById<Button>(R.id.Button7)
-        button7.setOnClickListener { null }
+        button7.setOnClickListener { }
         val button8 = findViewById<Button>(R.id.Button8)
-        button8.setOnClickListener { null }
+        button8.setOnClickListener { }
         val button9 = findViewById<Button>(R.id.Button9)
-        button9.setOnClickListener { null }
+        button9.setOnClickListener { }
     }
 
     private fun changeText(button: Button) {
@@ -110,6 +110,24 @@ class MainActivity : AppCompatActivity() {
             val player = instructionText.text.substring(0, 1)
             instructionText.text = "$player wins!"
             disableBoard()
+            return true
+        }
+        return isDraw()
+    }
+
+    private fun isDraw(): Boolean {
+        if (findViewById<Button>(R.id.Button1).text != ""
+            && findViewById<Button>(R.id.Button2).text != ""
+            && findViewById<Button>(R.id.Button3).text != ""
+            && findViewById<Button>(R.id.Button4).text != ""
+            && findViewById<Button>(R.id.Button5).text != ""
+            && findViewById<Button>(R.id.Button6).text != ""
+            && findViewById<Button>(R.id.Button7).text != ""
+            && findViewById<Button>(R.id.Button8).text != ""
+            && findViewById<Button>(R.id.Button9).text != ""
+        ) {
+            val instructionText = this.findViewById<TextView>(R.id.InstructionText)
+            instructionText.text = "It's a draw..."
             return true
         }
         return false
