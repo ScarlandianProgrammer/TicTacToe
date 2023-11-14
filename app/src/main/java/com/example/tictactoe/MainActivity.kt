@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
         val button9 = findViewById<Button>(R.id.Button9)
         button9.text = ""
         val instructionText = this.findViewById<TextView>(R.id.InstructionText)
-        instructionText.text = "X's Turn"
+        instructionText.text = getString(R.string.turn_x)
         enableBoard()
     }
 
@@ -91,12 +91,12 @@ class MainActivity : AppCompatActivity() {
             if (instructionText.text.substring(0, 1) == "X") {
                 button.text = "X"
                 if (!isGameDone()) {
-                    instructionText.text = "O's Turn"
+                    instructionText.text = getString(R.string.turn_o)
                 }
             } else {
-                button.text = "0"
+                button.text = "O"
                 if (!isGameDone()) {
-                    instructionText.text = "X's Turn"
+                    instructionText.text = getString(R.string.turn_x)
                 }
             }
         }
@@ -127,7 +127,7 @@ class MainActivity : AppCompatActivity() {
             && findViewById<Button>(R.id.Button9).text != ""
         ) {
             val instructionText = this.findViewById<TextView>(R.id.InstructionText)
-            instructionText.text = "It's a draw..."
+            instructionText.text = getString(R.string.draw)
             return true
         }
         return false
